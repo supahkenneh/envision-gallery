@@ -21,6 +21,7 @@ html, body {
   border-bottom: 2px solid gray;
   padding: 10px;
   margin: auto 30px;
+  margin-bottom: 15px;
 }
 
 .main-header h1 {
@@ -52,4 +53,10 @@ html, body {
   height: 5vh;
   background: #222;
   width: 100%;
+}
+
+.body {
+  grid-area: main-pic, content;
+  background: lightgray;
+  height: 100vh;
 }
