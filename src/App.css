@@ -1,17 +1,17 @@
 html, body {
   margin: 0;
   padding: 0;
-  display: grid;
   background: whitesmoke;
 }
 
-#root {
-  grid-template-columns: 10% auto 10%;
+.app {
+  display: grid;
+  grid-template-columns: 10% auto 15%;
   grid-template-rows: 10% auto 10%;
   grid-template-areas: 
   "header header header"
-  "sidebar content sidebar"
-  "footer footer footer"
+  "sidebar main-pic secondary-sidebar"
+  "sidebar content secondary-sidebar"
 }
 
 .main-header {
@@ -38,4 +38,18 @@ html, body {
     padding: 25px;
     font-size: 14px;
     color: gray;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  height: 100vh;
+  background: gray;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  background: #222;
+  width: 100%;
 }
