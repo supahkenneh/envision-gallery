@@ -26,7 +26,7 @@ html, body {
 
 .main-header h1 {
   font-size: 52px;
-  color: #222;
+  color: gray;
   letter-spacing: 10px;
 }
 
@@ -44,7 +44,27 @@ html, body {
 .sidebar {
   grid-area: sidebar;
   height: 100vh;
-  background: gray;
+  background: whitesmoke;
+}
+
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-options button {
+  padding: 10px;
+  font-size: 14px;
+  background: transparent;
+  width: 100px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.sidebar-options button:hover {
+  background: black;
+  color: white;
 }
 
 .footer {

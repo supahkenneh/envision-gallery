@@ -5,7 +5,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'envision_gallery',
-      user:     'envision_gallery_user',
+      user: 'envision_gallery_user',
       password: 'password'
     },
     pool: {
@@ -15,6 +15,9 @@ module.exports = {
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations'),
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: path.join(__dirname, 'db', 'seeds'),
     }
   },
 
@@ -22,7 +25,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -38,7 +41,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
