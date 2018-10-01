@@ -77,18 +77,57 @@ html, body {
 
 .body {
   grid-area: main-pic, content;
-  background: lightgray;
   height: 100%;
 }
 
 .main-image-container {
+  grid-area: main-pic;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   height: 500px;
   width: 100%;
+  margin: 15px;
 }
 
 .main-image-container img {
   max-height: 100%;
   /* max-width: 100%;; */
+  border-radius: 5px;
 }
+
+.photo-collection {
+  grid-area: content;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.collection-photo-container {
+  height: 700px;
+  width: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.collection-photo-container img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.collection-photo-container img:hover {
+  opacity: 0.8;
+}
+
+.collection-photo-container .owner {
+  font-size: 14px;
+  border-bottom: 1px solid gray;
+}
+
