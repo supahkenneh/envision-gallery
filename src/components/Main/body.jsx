@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
+import MainPhoto from './mainPhoto';
 class Body extends Component {
-  state = {}
+  constructor() {
+    super()
+    this.state = {
+      photos: [],
+    }
+  }
 
   componentDidMount() {
-    return axios.get('/api')
+    return axios.get('/api/photos')
       .then(response => {
-        console.log(response);
+        this.setState({ photos: response.data })
       })
   }
+
   render() {
     return (
       <div className="body">
-        <div>body</div>
+        <MainPhoto main={this.state.photos} />
       </div>
     );
   }

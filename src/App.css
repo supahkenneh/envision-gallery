@@ -78,5 +78,17 @@ html, body {
 .body {
   grid-area: main-pic, content;
   background: lightgray;
-  height: 100vh;
+  height: 100%;
+}
+
+.main-image-container {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 100%;
+}
+
+.main-image-container img {
+  max-height: 100%;
+  /* max-width: 100%;; */
 }
