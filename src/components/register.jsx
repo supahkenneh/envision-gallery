@@ -5,12 +5,18 @@ class Register extends Component {
     super(props);
     this.state = {}
   }
+  
   render() {
     return (
-      <div id="register-modal">
-        <div className="form-container">
-          <div>register form</div>
-        </div>
+      <div className="register-form-container">
+        <form>
+          <label htmlFor="username">Username</label>
+          <input type="text" />
+          <label htmlFor="password">Password</label>
+          <input type="text" />
+          <label htmlFor="email">Email</label>
+          <input type="text" />
+        </form>
       </div>
     );
   }

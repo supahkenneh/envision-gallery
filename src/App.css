@@ -154,3 +154,45 @@ html, body {
   cursor: pointer;
   border-bottom: 1px solid gray;
 }
+
+/* Register Page */
+.register-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+}
+
+.register-form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+}
+
+.register-form-container form label {
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+  padding: 10px;
+  margin: 5px;
+}
+
+.register-form-container form input {
+  width: 70%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid gray;
+}
