@@ -11,7 +11,7 @@ const PhotoCollection = props => {
               <CollectionPhoto
                 key={photo.id}
                 link={photo.link}
-                owner={photo.id}
+                owner={photo.owner.username}
               />
             )
           })

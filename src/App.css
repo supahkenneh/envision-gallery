@@ -83,17 +83,38 @@ html, body {
 .main-image-container {
   grid-area: main-pic;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  height: 500px;
+  /* height: 500px; */
   width: 100%;
   margin: 15px;
 }
 
-.main-image-container img {
+.main-image-container .image-container {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  margin: 10px;
   max-height: 100%;
   /* max-width: 100%;; */
   border-radius: 5px;
+}
+
+.main-image-container img:hover {
+  opacity: 0.8;
+}
+
+.main-image-container .owner-container {
+  margin: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid gray;
 }
 
 .photo-collection {

@@ -25,7 +25,7 @@ class Body extends Component {
   render() {
     return (
       <div className="body">
-        <MainPhoto main={this.state.photos} />
+        <MainPhoto main={this.state.photos} user={this.state.photos.owner}/>
         <PhotoCollection collection={this.state.collection} />
       </div>
     );

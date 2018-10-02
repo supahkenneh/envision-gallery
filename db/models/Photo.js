@@ -4,8 +4,8 @@ class Photo extends bookshelf.Model {
   get tableName() { return 'photos'; }
   get hasTimestamps() { return true; }
 
-  user() {
-    return this.belongsTo('User', 'users.id');
+  owner() {
+    return this.belongsTo('User', 'owner');
   };
 };
 

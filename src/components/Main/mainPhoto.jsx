@@ -1,10 +1,15 @@
 import React from 'react';
 
 const MainPhoto = props => {
-  if (props.main) {
+  if (props.main && props.user) {
     return (
       <div className="main-image-container">
-        <img src={props.main.link} alt="" />
+        <div className="image-container">
+          <img src={props.main.link} alt="" />
+        </div>
+        <div className="owner-container">
+          <div className="owner">@{props.user.username}</div>
+        </div>
       </div>
     );
   }
