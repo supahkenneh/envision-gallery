@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
@@ -21,7 +22,27 @@ class Login extends Component {
     console.log(this.state);
   }
 
+  handleLogin = (e) => {
+    e.preventDefault();
+    return axios.post('/api/login', this.state)
+      .then(response => {
+        //save logged in user to localStorage
+        window.localStorage.setItem('id', response.data.id);
+        window.localStorage.setItem('username', response.data.username);
+        window.localStorage.setItem('email', response.data.email);
+        this.setState({ redirect: true })
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
+    const { redirect } = this.state;
+    if (redirect) {
+      console.log(window.localStorage);
+      return (
+        <Redirect to="/" />
+      )
+    }
     return (
       <div className="auth-form-container">
         <form>
@@ -36,7 +57,10 @@ class Login extends Component {
             onChange={this.handlePasswordInput}
           />
           <div className="button-container">
-            <button className="action-button">Login</button>
+            <button
+              className="action-button"
+              onClick={this.handleLogin}
+            >Login</button>
             <Link to="/">
               <button className="cancel-button">Cancel</button>
             </Link>
