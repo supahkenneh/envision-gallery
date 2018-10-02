@@ -38,7 +38,6 @@ class Login extends Component {
   render() {
     const { redirect } = this.state;
     if (redirect) {
-      console.log(window.localStorage);
       return (
         <Redirect to="/" />
       )
