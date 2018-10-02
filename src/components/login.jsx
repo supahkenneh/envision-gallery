@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       username: '',
-      password: '',
-      email: ''
+      password: ''
     }
   }
 
   handleUsernameInput = (event) => {
     this.setState({ username: event.target.value })
+    console.log(this.state);
   }
 
   handlePasswordInput = (event) => {
     this.setState({ password: event.target.value })
-  }
-
-  handleEmailInput = (event) => {
-    this.setState({ email: event.target.value })
+    console.log(this.state);
   }
 
   render() {
@@ -35,16 +32,11 @@ class Register extends Component {
           />
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             onChange={this.handlePasswordInput}
           />
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            onChange={this.handleEmailInput}
-          />
           <div className="button-container">
-            <button className="action-button">Register</button>
+            <button className="action-button">Login</button>
             <Link to="/">
               <button className="cancel-button">Cancel</button>
             </Link>
@@ -55,4 +47,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Login;
