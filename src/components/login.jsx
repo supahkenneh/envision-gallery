@@ -14,12 +14,10 @@ class Login extends Component {
 
   handleUsernameInput = (event) => {
     this.setState({ username: event.target.value })
-    console.log(this.state);
   }
 
   handlePasswordInput = (event) => {
     this.setState({ password: event.target.value })
-    console.log(this.state);
   }
 
   handleLogin = (e) => {
