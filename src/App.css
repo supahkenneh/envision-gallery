@@ -89,6 +89,7 @@ html, body {
   /* height: 500px; */
   width: 100%;
   margin: 15px;
+  border-bottom: 1px solid gray;
 }
 
 .main-image-container .image-container {
@@ -114,6 +115,7 @@ html, body {
 .main-image-container .owner-container {
   margin: 10px;
   font-size: 14px;
+  cursor: pointer;
   border-bottom: 1px solid gray;
 }
 
@@ -149,6 +151,6 @@ html, body {
 
 .collection-photo-container .owner {
   font-size: 14px;
+  cursor: pointer;
   border-bottom: 1px solid gray;
 }
-
