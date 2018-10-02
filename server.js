@@ -10,7 +10,6 @@ const PORT = process.env.port || 8000;
 const routes = require('./routes');
 
 server.use(bodyParser.json());
-server.use('/api', routes);
 
 server.use(
   session({
@@ -23,6 +22,8 @@ server.use(
 
 server.use(passport.initialize());
 server.use(passport.session());
+
+server.use('/api', routes);
 
 server.listen(PORT, (req, res) => {
   console.log(`Server started on port: ${PORT}`)

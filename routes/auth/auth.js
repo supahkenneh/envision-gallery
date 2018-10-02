@@ -80,7 +80,6 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
-  console.log('login');
   passport.authenticate('local', (err, user, info) => {
     if (err) { return next(err); }
     // if (!user) { return res.redirect('/login'); }
