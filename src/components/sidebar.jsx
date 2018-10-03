@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 class Sidebar extends Component {
   constructor() {
     super()
-    this.state = {
-      isLoggedIn: false
-    }
+    this.state = {}
+  }
+
+  handleLogout = () => {
+    window.localStorage.clear();
   }
 
   render() {
@@ -30,7 +32,10 @@ class Sidebar extends Component {
         <div className="sidebar-options">
           <button>Your Profile</button>
           <button>Upload</button>
-          <button>Logout</button>
+          <button
+            className="logout-button"
+            onClick={this.handleLogout}
+          >Logout</button>
         </div>
       </div>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 //components
 import Header from './components/header';
@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.loggedIn);
     return (
       <div className="app">
         <Header />
