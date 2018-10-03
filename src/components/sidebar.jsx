@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 class Sidebar extends Component {
   constructor() {
     super()
-    this.state = { isLoggedIn: false }
+    this.state = {
+      isLoggedIn: false
+    }
   }
 
   render() {
-    const { isLoggedIn } = this.state;
-    if (!isLoggedIn) {
+    const { loggedIn } = this.props;
+    if (!loggedIn) {
       return (
         <div className="sidebar">
           <div className="sidebar-options">
@@ -23,6 +25,15 @@ class Sidebar extends Component {
         </div>
       );
     }
+    return (
+      <div className="sidebar">
+        <div className="sidebar-options">
+          <button>Your Profile</button>
+          <button>Upload</button>
+          <button>Logout</button>
+        </div>
+      </div>
+    )
   }
 }
 

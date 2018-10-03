@@ -28,14 +28,15 @@ class Login extends Component {
         window.localStorage.setItem('id', response.data.id);
         window.localStorage.setItem('username', response.data.username);
         window.localStorage.setItem('email', response.data.email);
-        this.setState({ redirect: true })
+        this.setState({ isLoggedIn: true })
+        this.props.onRedirect(this.state.isLoggedIn);
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { redirect } = this.state;
-    if (redirect) {
+    const { isLoggedIn } = this.state;
+    if (isLoggedIn) {
       return (
         <Redirect to="/" />
       )
