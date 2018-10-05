@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import axios from 'axios';
 import { registerUser } from '../actions/userActions';
 import { connect } from 'react-redux';
 
@@ -33,7 +32,7 @@ class Register extends Component {
   }
 
   render() {
-    if (this.props.user) {
+    if (this.props.user.username) {
       return (
         <Redirect to="/" />
       )

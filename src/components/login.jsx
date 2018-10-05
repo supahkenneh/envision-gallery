@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
+import { loginUser } from '../actions/userActions';
+import { connect } from 'react-redux';
 
 class Login extends Component {
   constructor(props) {
@@ -22,21 +23,11 @@ class Login extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    return axios.post('/api/login', this.state)
-      .then(response => {
-        //save logged in user to localStorage
-        window.localStorage.setItem('id', response.data.id);
-        window.localStorage.setItem('username', response.data.username);
-        window.localStorage.setItem('email', response.data.email);
-        this.setState({ isLoggedIn: true })
-        this.props.onRedirect(this.state.isLoggedIn);
-      })
-      .catch(err => console.log(err));
+    this.props.loginUser(this.state);
   }
 
   render() {
-    const { isLoggedIn } = this.state;
-    if (isLoggedIn) {
+    if (this.props.user.username) {
       return (
         <Redirect to="/" />
       )
@@ -69,4 +60,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, { loginUser })(Login);
