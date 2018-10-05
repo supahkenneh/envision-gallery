@@ -37,4 +37,4 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-export default connect(mapStateToProps, { checkUser })(App);
+export default connect(mapStateToProps, { checkUser }, null, { pure: false })(App);
