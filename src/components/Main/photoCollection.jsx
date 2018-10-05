@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CollectionPhoto from './collectionPhoto';
 
 const PhotoCollection = props => {
@@ -7,12 +8,15 @@ const PhotoCollection = props => {
       <div className="photo-collection">
         {
           props.collection.map(photo => {
+            // const photoId = photo && photo.id ? photo.id : null;
             return (
-              <CollectionPhoto
-                key={photo.id}
-                link={photo.link}
-                owner={photo.owner.username}
-              />
+              <Link to={`/photo/${photo.id}`} key={photo.id}>
+                <CollectionPhoto
+                  key={photo.id}
+                  link={photo.link}
+                  owner={photo.owner.username}
+                />
+              </Link>
             )
           })
         }

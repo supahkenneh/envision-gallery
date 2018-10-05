@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPhotos } from '../../actions/photoActions';
 
@@ -13,10 +14,13 @@ class Body extends Component {
   render() {
     //plucking out first photo to be used for MainPhoto
     //rest of photos passed to PhotoCollection
-    let main = this.props.photos.splice(0, 1)[0];
+    const main = this.props.photos.splice(0, 1)[0];
+    const mainId = main && main.id ? main.id : null;
     return (
       <div className="body">
-        <MainPhoto main={main} />
+        <Link to={`/photo/${mainId}`}>
+          <MainPhoto main={main} />
+        </Link>
         <PhotoCollection collection={this.props.photos} />
       </div>
     );

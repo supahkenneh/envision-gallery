@@ -9,6 +9,7 @@ import Footer from './components/footer';
 import Body from './components/Main/body';
 import Register from './components/register';
 import Login from './components/login';
+import PhotoPage from './components/photoPage';
 
 import { connect } from 'react-redux';
 import { checkUser } from './actions/userActions';
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact={true} path="/" component={Body} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path={`/photo/:id`} component={PhotoPage} />
         </Switch>
         <Footer />
       </div>
