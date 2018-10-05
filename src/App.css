@@ -42,10 +42,19 @@ html, body {
     color: gray;
 }
 
+/* TAG: SIDEBAR */
 .sidebar {
   grid-area: sidebar;
   height: 100vh;
   background: whitesmoke;
+}
+
+.sidebar .message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+  font-size: 18px;
 }
 
 .sidebar-options {
@@ -156,7 +165,7 @@ html, body {
   border-bottom: 1px solid gray;
 }
 
-/* Register Page */
+/* TAG: Register Page */
 .register-form-container {
   display: flex;
   flex-direction: column;

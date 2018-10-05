@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 class Sidebar extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-
-  handleLogout = () => {
-    window.localStorage.clear();
-  }
 
   render() {
-    const { loggedIn } = this.props;
-    if (!loggedIn) {
+    if (!this.props.user.username) {
       return (
         <div className="sidebar">
           <div className="sidebar-options">
@@ -29,6 +19,7 @@ class Sidebar extends Component {
     }
     return (
       <div className="sidebar">
+        <div className="message">Welcome {this.props.user.username}</div>
         <div className="sidebar-options">
           <button>Your Profile</button>
           <button>Upload</button>
