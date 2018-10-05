@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/userActions';
 class Sidebar extends Component {
+
+  logoutUser = () => {
+    this.props.logoutUser();
+  }
 
   render() {
     if (!this.props.user.username) {
@@ -25,7 +31,7 @@ class Sidebar extends Component {
           <button>Upload</button>
           <button
             className="logout-button"
-            onClick={this.handleLogout}
+            onClick={this.logoutUser}
           >Logout</button>
         </div>
       </div>
@@ -33,4 +39,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default connect(null, { logoutUser })(Sidebar);
