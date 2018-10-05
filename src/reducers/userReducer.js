@@ -1,7 +1,9 @@
-import { LOGIN_USER } from '../actions';
+import { LOGIN_USER, REGISTER_USER } from '../actions';
 
-const userReducer = (user = {}, action) => {
+const user = (user = {}, action) => {
   switch (action.type) {
+    case REGISTER_USER:
+      return user = action.payload;
     case LOGIN_USER:
       return user = action.payload;
     default:
@@ -9,4 +11,4 @@ const userReducer = (user = {}, action) => {
   }
 }
 
-export default userReducer;
+export default user;

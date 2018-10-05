@@ -69,7 +69,13 @@ router.post('/register', (req, res) => {
       })
         .save()
         .then(result => {
-          res.json({ success: true })
+          //pluck off id, username, and email for redux
+          let userProfile = {
+            id: result.attributes.id,
+            username: result.attributes.username,
+            email: result.attributes.email
+          }
+          res.json(userProfile)
         })
         .catch(err => {
           console.log('error : ', err)
