@@ -165,7 +165,7 @@ html, body {
   border-bottom: 1px solid gray;
 }
 
-/* TAG: Register Page */
+/* TAG: Register Page and Login */
 .register-form-container {
   display: flex;
   flex-direction: column;
@@ -252,4 +252,56 @@ html, body {
 
 .photo-detail-container .details-container {
   margin: 15px auto;
+}
+
+.upload-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.form-headline {
+  width: 100%;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.upload-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.upload-form label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.upload-form .photo-upload-label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.upload-form input {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload-form textarea {
+  resize: none;
+  width: 75%;
+  height: 100px;
+  font-size: 16px;
+  padding: 5px;
 }

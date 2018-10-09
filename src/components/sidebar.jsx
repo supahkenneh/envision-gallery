@@ -28,7 +28,9 @@ class Sidebar extends Component {
         <div className="message">Welcome {this.props.user.username}</div>
         <div className="sidebar-options">
           <button>Your Profile</button>
-          <button>Upload</button>
+          <Link to="/photos/upload">
+            <button>Upload</button>
+          </Link>
           <button
             className="logout-button"
             onClick={this.logoutUser}
