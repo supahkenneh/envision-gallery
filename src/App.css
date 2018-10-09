@@ -228,3 +228,28 @@ html, body {
   color: white;
 }
 
+/* TAG: PHOTO ID PAGE */
+
+.photo-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 15px;
+  margin-bottom: 100px;
+}
+
+.photo-detail-container .image-container {
+  height: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-detail-container .details-container {
+  margin: 15px auto;
+}
