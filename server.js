@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
@@ -14,7 +15,7 @@ server.use(bodyParser.json());
 server.use(
   session({
     store: new Redis(),
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
   })
