@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PHOTOS, LOAD_PHOTO } from './index';
+import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO } from './index';
 
 const PATH = '/api';
 
@@ -21,6 +21,23 @@ export const loadPhoto = id => {
       .then(response => {
         dispatch({
           type: LOAD_PHOTO,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export const postPhoto = data => {
+  const form = new FormData();
+  form.append('photo', data.photo);
+  form.append('description', data.description);
+
+  return dispatch => {
+    return axios.post(`${PATH}/photos/upload`, form)
+      .then(response => {
+        console.log(response);
+        dispatch({
+          type: ADD_PHOTO,
           payload: response.data
         })
       })

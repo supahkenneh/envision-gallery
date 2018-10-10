@@ -22,7 +22,7 @@ const upload = multer({
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
-    key: function(req, file, cb) {
+    key: function (req, file, cb) {
       cb(
         null,
         `${req.user.username}/${Date.now().toString()}-${file.originalname}`
@@ -55,6 +55,21 @@ router.get('/:id', (req, res) => {
     .then(photo => {
       res.json(photo);
     })
+})
+
+router.post('/upload', upload.single('photo'), (req, res) => {
+  const photoLink = req.file.location;
+  const { description } = req.body;
+  return new Photo({
+    link: photoLink,
+    owner: req.user.id,
+    description
+  })
+    .save()
+    .then(photo => {
+      res.json(photo)
+    })
+
 })
 
 module.exports = router;

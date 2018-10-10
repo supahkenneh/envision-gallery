@@ -5,3 +5,4 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const GET_PHOTOS = 'GET_PHOTOS';
 export const LOAD_PHOTO = 'LOAD_PHOTO';
+export const ADD_PHOTO = 'ADD_PHOTO';
