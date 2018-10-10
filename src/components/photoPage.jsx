@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadPhoto } from '../actions/photoActions';
+import SecondSidebar from '../components/secondSidebar';
 
 class PhotoPage extends Component {
 
@@ -12,17 +13,21 @@ class PhotoPage extends Component {
   render() {
     if (this.props.photo) {
       return (
-        <div className="photo-detail-container">
-          <div className="image-container">
-            <img src={this.props.photo.link} alt="" />
+        <React.Fragment>
+          <div className="photo-detail-container">
+            <div className="image-container">
+              <img src={this.props.photo.link} alt="" />
+            </div>
+            <div className="details-container">
+              <Link to={`/users/${this.props.photo.owner && this.props.photo.owner.id}`}>
+                <div>@{this.props.photo.owner && this.props.photo.owner.username}</div>
+              </Link>
+              <div>{this.props.photo && this.props.photo.description}</div>
+            </div>
           </div>
-          <div className="details-container">
-            <Link to={`/users/${this.props.photo.owner && this.props.photo.owner.id}`}>
-              <div>@{this.props.photo.owner && this.props.photo.owner.username}</div>
-            </Link>
-            <div>{this.props.photo && this.props.photo.description}</div>
-          </div>
-        </div>
+          <SecondSidebar photo={this.props.photo} />
+        </React.Fragment>
+
       );
     }
     return (

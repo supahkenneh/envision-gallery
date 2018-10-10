@@ -87,6 +87,7 @@ html, body {
 
 .body {
   grid-area: main-pic, content;
+  padding: 20px;
   height: 100%;
 }
 
@@ -298,6 +299,36 @@ html, body {
 }
 
 .upload-form .button-container .cancel-button:hover {
+  background: black;
+  color: white;
+}
+
+/* TAG: Second-Sidebar */
+.second-sidebar-container {
+  grid-area: "secondary-sidebar";
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-top: 25px;
+}
+
+.sidebar-button-container button {
+  background: transparent;
+  padding: 10px;
+  font-size: 14px;
+  width: 100px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.sidebar-button-container button:hover {
   background: black;
   color: white;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postPhoto } from '../../actions/photoActions';
 
@@ -54,7 +54,9 @@ class PhotoUpload extends Component {
               className="action-button"
               onClick={this.handleSubmit}
             >Submit</button>
-            <button className="cancel-button">Cancel</button>
+            <Link to="/">
+              <button className="cancel-button">Cancel</button>
+            </Link>
           </div>
         </form>
       </div>

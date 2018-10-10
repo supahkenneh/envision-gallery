@@ -35,7 +35,6 @@ export const postPhoto = data => {
   return dispatch => {
     return axios.post(`${PATH}/photos/upload`, form)
       .then(response => {
-        console.log(response);
         dispatch({
           type: ADD_PHOTO,
           payload: response.data
