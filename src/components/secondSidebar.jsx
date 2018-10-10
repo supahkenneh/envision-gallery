@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import EditingModal from './Modals/editingModal';
 
 class SecondSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false
+      editing: false,
+      deleting: false
     }
   }
 
@@ -15,17 +17,32 @@ class SecondSidebar extends Component {
     this.setState({ editing: false })
   }
 
+  toggleDelete = id => {
+    if (!this.state.deleting) {
+      return this.setState({ deleting: true })
+    }
+    this.setState({ deleting: false })
+  }
+
   render() {
     const id = this.props.photo.id
     return (
       <div className="second-sidebar-container" >
+        {this.state.editing ?
+          <EditingModal
+            onClick={() => this.toggleEdit(id)}
+            photo={this.props.photo}
+          />
+          : null}
         <div className="sidebar-button-container">
           <button
             onClick={() => this.toggleEdit(id)}
           >Edit</button>
-          <button>Delete</button>
+          <button
+            onClick={() => this.toggleDelete(id)}
+          >Delete</button>
         </div>
-      </div>
+      </div >
     );
   }
 }
