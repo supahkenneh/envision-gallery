@@ -3,7 +3,8 @@ import {
   LOAD_PHOTO,
   ADD_PHOTO,
   EDIT_PHOTO,
-  DELETE_PHOTO
+  DELETE_PHOTO,
+  GET_USER_PHOTOS
 } from '../actions';
 
 function photos(state = [], action) {
@@ -18,6 +19,8 @@ function photos(state = [], action) {
       return action.payload;
     case DELETE_PHOTO:
       return state;
+    case GET_USER_PHOTOS:
+      return [...action.payload];
     default:
       return state;
   }

@@ -8,7 +8,6 @@ const PhotoCollection = props => {
       <div className="photo-collection">
         {
           props.collection.map(photo => {
-            // const photoId = photo && photo.id ? photo.id : null;
             return (
               <Link to={`/photo/${photo.id}`} key={photo.id}>
                 <CollectionPhoto

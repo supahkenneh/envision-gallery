@@ -27,7 +27,9 @@ class Sidebar extends Component {
       <div className="sidebar">
         <div className="message">Welcome {this.props.user.username}</div>
         <div className="sidebar-options">
-          <button>Your Profile</button>
+          <Link to={`/users/${this.props.user.id}`}>
+            <button>Your Profile</button>
+          </Link>
           <Link to="/photos/upload">
             <button>Upload</button>
           </Link>
@@ -41,4 +43,8 @@ class Sidebar extends Component {
   }
 }
 
-export default connect(null, { logoutUser })(Sidebar);
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, { logoutUser })(Sidebar);

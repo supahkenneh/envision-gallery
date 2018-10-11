@@ -11,6 +11,7 @@ import Register from './components/register';
 import Login from './components/login';
 import PhotoPage from './components/photoPage';
 import PhotoUpload from './components/Main/uploadPhoto';
+import Profile from './components/profile';
 
 import { connect } from 'react-redux';
 import { checkUser } from './actions/userActions';
@@ -30,6 +31,7 @@ class App extends Component {
           <Route path="/login" component={Login} />
           <Route path={`/photo/:id`} component={PhotoPage} />
           <Route path="/photos/upload" component={PhotoUpload} />
+          <Route path="/users/:id" component={Profile} />
         </Switch>
         <Footer />
       </div>

@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, CHECK_USER, LOGOUT_USER } from './index';
+import {
+  LOGIN_USER,
+  REGISTER_USER,
+  CHECK_USER,
+  LOGOUT_USER,
+  GET_USER_PHOTOS
+} from './index';
 
 const PATH = '/api'
 
@@ -55,6 +61,18 @@ export const logoutUser = () => {
             type: LOGOUT_USER
           })
         }
+      })
+  }
+}
+
+export const getUserPhotos = id => {
+  return dispatch => {
+    return axios.get(`${PATH}/users/${id}`)
+      .then(response => {
+        dispatch({
+          type: GET_USER_PHOTOS,
+          payload: response.data
+        })
       })
   }
 }
