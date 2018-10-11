@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO } from './index';
+import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO, EDIT_PHOTO } from './index';
 
 const PATH = '/api';
 
@@ -37,6 +37,18 @@ export const postPhoto = data => {
       .then(response => {
         dispatch({
           type: ADD_PHOTO,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export const editPhoto = (data, id) => {
+  return dispatch => {
+    return axios.put(`${PATH}/photos/${id}`, data)
+      .then(response => {
+        dispatch({
+          type: EDIT_PHOTO,
           payload: response.data
         })
       })

@@ -69,7 +69,23 @@ router.post('/upload', upload.single('photo'), (req, res) => {
     .then(photo => {
       res.json(photo)
     })
+})
 
+router.put('/:id', (req, res) => {
+  const { description } = req.body
+  const id = req.params.id;
+  return new Photo({ id })
+    .save({ description }, { patch: true })
+    .then(photo => {
+      return photo.refresh({
+        withRelated: [{
+          'owner': qb => { qb.column('id', 'username') }
+        }]
+      })
+    })
+    .then(photo => {
+      res.json(photo);
+    })
 })
 
 module.exports = router;
