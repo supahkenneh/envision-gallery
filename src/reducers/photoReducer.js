@@ -1,4 +1,10 @@
-import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO, EDIT_PHOTO } from '../actions';
+import {
+  GET_PHOTOS,
+  LOAD_PHOTO,
+  ADD_PHOTO,
+  EDIT_PHOTO,
+  DELETE_PHOTO
+} from '../actions';
 
 function photos(state = [], action) {
   switch (action.type) {
@@ -10,6 +16,8 @@ function photos(state = [], action) {
       return [...state, action.payload];
     case EDIT_PHOTO:
       return action.payload;
+    case DELETE_PHOTO:
+      return state;
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO, EDIT_PHOTO } from './index';
+import { GET_PHOTOS, LOAD_PHOTO, ADD_PHOTO, EDIT_PHOTO, DELETE_PHOTO } from './index';
 
 const PATH = '/api';
 
@@ -50,6 +50,17 @@ export const editPhoto = (data, id) => {
         dispatch({
           type: EDIT_PHOTO,
           payload: response.data
+        })
+      })
+  }
+}
+
+export const deletePhoto = id => {
+  return dispatch => {
+    return axios.delete(`${PATH}/photos/${id}`)
+      .then(response => {
+        dispatch({
+          type: DELETE_PHOTO,
         })
       })
   }

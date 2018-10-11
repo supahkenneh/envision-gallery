@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditingModal from './Modals/editingModal';
+import DeleteModal from './Modals/deleteModal';
 
 class SecondSidebar extends Component {
   constructor(props) {
@@ -34,6 +35,13 @@ class SecondSidebar extends Component {
             photo={this.props.photo}
           />
           : null}
+        {this.state.deleting ?
+          <DeleteModal
+            onClick={() => this.toggleDelete(id)}
+            photoId={this.props.photo.id}
+          />
+          : null
+        }
         <div className="sidebar-button-container">
           <button
             onClick={() => this.toggleEdit(id)}

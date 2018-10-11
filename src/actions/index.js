@@ -7,3 +7,4 @@ export const GET_PHOTOS = 'GET_PHOTOS';
 export const LOAD_PHOTO = 'LOAD_PHOTO';
 export const ADD_PHOTO = 'ADD_PHOTO';
 export const EDIT_PHOTO = 'EDIT_PHOTO';
+export const DELETE_PHOTO = 'DELETE_PHOTO';
