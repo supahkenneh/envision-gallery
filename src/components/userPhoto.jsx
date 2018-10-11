@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const UserPhoto = props => {
-  console.log(props);
   return (
     <div className="user-photo-card">
       <Link to={`/photo/${props.photo.id}`}>
