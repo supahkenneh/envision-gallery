@@ -24,7 +24,7 @@ class DeleteModal extends Component {
     }
     return (
       <div className="modal" >
-        <div className="modal-container">
+        <div className="delete-modal-container">
           <div>Confirm Delete</div>
           <div className="button-container">
             <button
