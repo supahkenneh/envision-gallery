@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { checkUser } from '../actions/userActions';
+
+
 import EditingModal from './Modals/editingModal';
 import DeleteModal from './Modals/deleteModal';
+import SidebarPhotoContainer from './sidebarPhotos';
+
 
 class SecondSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
-      deleting: false
+      deleting: false,
     }
+  }
+
+  componentDidMount() {
+    this.props.checkUser();
   }
 
   toggleEdit = id => {
@@ -26,33 +36,44 @@ class SecondSidebar extends Component {
   }
 
   render() {
-    const id = this.props.photo.id
+    const id = this.props.photo.id;
+    const photoOwner = this.props.photo.owner && this.props.photo.owner.username;
+    const photoOwnerId = this.props.photo.owner && this.props.photo.owner.id;
+    if (photoOwner === this.props.user.username) {
+      return (
+        <div className="second-sidebar-container">
+          {this.state.editing ?
+            <EditingModal
+              onClick={() => this.toggleEdit(id)}
+              photo={this.props.photo}
+            />
+            : null}
+          {this.state.deleting ?
+            <DeleteModal
+              onClick={() => this.toggleDelete(id)}
+              photoId={this.props.photo.id}
+            />
+            : null
+          }
+          <div className="sidebar-button-container">
+            <button
+              onClick={() => this.toggleEdit(id)}
+            >Edit</button>
+            <button
+              onClick={() => this.toggleDelete(id)}
+            >Delete</button>
+          </div>
+        </div >
+      );
+    }
     return (
-      <div className="second-sidebar-container" >
-        {this.state.editing ?
-          <EditingModal
-            onClick={() => this.toggleEdit(id)}
-            photo={this.props.photo}
-          />
-          : null}
-        {this.state.deleting ?
-          <DeleteModal
-            onClick={() => this.toggleDelete(id)}
-            photoId={this.props.photo.id}
-          />
-          : null
-        }
-        <div className="sidebar-button-container">
-          <button
-            onClick={() => this.toggleEdit(id)}
-          >Edit</button>
-          <button
-            onClick={() => this.toggleDelete(id)}
-          >Delete</button>
-        </div>
-      </div >
-    );
+      <SidebarPhotoContainer ownerId={photoOwnerId} photoId={id} owner={photoOwner} />
+    )
   }
 }
 
-export default SecondSidebar;
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, { checkUser })(SecondSidebar);

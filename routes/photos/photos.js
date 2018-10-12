@@ -57,6 +57,17 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/:id/all', (req, res) => {
+  // id is user
+  const id = req.params.id;
+  return Photo
+    .where({ owner: id })
+    .fetchAll()
+    .then(photos => {
+      res.json(photos);
+    })
+})
+
 router.post('/upload', upload.single('photo'), (req, res) => {
   const photoLink = req.file.location;
   const { description } = req.body;

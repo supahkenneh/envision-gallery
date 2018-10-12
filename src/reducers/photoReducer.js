@@ -4,7 +4,7 @@ import {
   ADD_PHOTO,
   EDIT_PHOTO,
   DELETE_PHOTO,
-  GET_USER_PHOTOS
+  GET_USER_PHOTOS,
 } from '../actions';
 
 function photos(state = [], action) {

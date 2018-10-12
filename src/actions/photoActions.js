@@ -5,6 +5,7 @@ import {
   ADD_PHOTO,
   EDIT_PHOTO,
   DELETE_PHOTO,
+  GET_OTHER_PHOTOS
 } from './index';
 
 const PATH = '/api';
@@ -67,6 +68,18 @@ export const deletePhoto = id => {
       .then(response => {
         dispatch({
           type: DELETE_PHOTO,
+        })
+      })
+  }
+}
+
+export const getOtherPhotos = id => {
+  return dispatch => {
+    return axios.get(`${PATH}/photos/${id}/all`)
+      .then(response => {
+        dispatch({
+          type: GET_OTHER_PHOTOS,
+          payload: response.data
         })
       })
   }
