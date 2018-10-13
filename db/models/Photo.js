@@ -7,6 +7,10 @@ class Photo extends bookshelf.Model {
   owner() {
     return this.belongsTo('User', 'owner');
   };
+
+  comments() {
+    return this.hasMany('Comment', 'id');
+  }
 };
 
 module.exports = bookshelf.model('Photo', Photo);

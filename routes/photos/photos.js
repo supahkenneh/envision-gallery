@@ -4,6 +4,7 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 
 const Photo = require('../../db/models/Photo');
+const Comment = require('../../db/models/Comment');
 
 const BUCKET_NAME = process.env.BUCKET_NAME;
 const IAM_USER_KEY = process.env.IAM_USER_KEY;
@@ -97,7 +98,7 @@ router.put('/:id', (req, res) => {
     .then(photo => {
       res.json(photo);
     })
-})
+});
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
@@ -106,6 +107,35 @@ router.delete('/:id', (req, res) => {
     .then(response => {
       return res.json({ success: true })
     })
-})
+});
+
+router.get('/:id/comments', (req, res) => {
+  const photo_id = req.params.id;
+  return Comment
+    .where({ photo_id })
+    .fetchAll({
+      withRelated: [{
+        'author': qb => { qb.column('id', 'username') }
+      }]
+    })
+    .then(comments => {
+      res.json(comments);
+    })
+});
+
+router.post('/:id/comments', (req, res) => {
+  const id = req.params.id;
+  const author = req.user.id;
+  const { content } = req.body;
+  return new Comment({
+    author,
+    photo_id: id,
+    content
+  })
+    .save()
+    .then(comment => {
+      res.json(comment);
+    })
+});
 
 module.exports = router;

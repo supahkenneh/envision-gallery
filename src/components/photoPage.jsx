@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadPhoto } from '../actions/photoActions';
+
 import SecondSidebar from '../components/secondSidebar';
+import Comments from './Comments/Comments';
 
 class PhotoPage extends Component {
 
@@ -26,6 +28,7 @@ class PhotoPage extends Component {
             </div>
           </div>
           <SecondSidebar photo={this.props.photo} />
+          <Comments photoId={this.props.photo.id} />
         </React.Fragment>
 
       );

@@ -10,3 +10,7 @@ export const LOAD_PHOTO = 'LOAD_PHOTO';
 export const ADD_PHOTO = 'ADD_PHOTO';
 export const EDIT_PHOTO = 'EDIT_PHOTO';
 export const DELETE_PHOTO = 'DELETE_PHOTO';
+
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const POST_COMMENT = 'POST_COMMENT';
+export const EDIT_COMMENT = 'EDIT_COMMENT';

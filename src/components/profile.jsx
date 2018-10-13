@@ -11,7 +11,7 @@ class Profile extends Component {
   }
 
   render() {
-    if (this.props.userPhotos) {
+    if (this.props.userPhotos.length) {
       return (
         <div className="user-photos-container">
           {this.props.userPhotos.map(photo => {
