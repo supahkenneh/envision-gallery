@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Comment from './Comment';
+import NewCommentForm from './CommentForm';
+
 import { getComments } from '../../actions/commentActions';
 
 class Comments extends Component {
@@ -26,11 +28,12 @@ class Comments extends Component {
               )
             })
           }
+          <NewCommentForm />
         </div>
       )
     }
     return (
-      <div> No Comments</div >
+      <NewCommentForm />
     )
   }
 }

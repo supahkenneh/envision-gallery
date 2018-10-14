@@ -29,3 +29,5 @@ server.use('/api', routes);
 server.listen(PORT, (req, res) => {
   console.log(`Server started on port: ${PORT}`)
 });
+
+//sidebar bug
