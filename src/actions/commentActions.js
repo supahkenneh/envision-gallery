@@ -14,3 +14,15 @@ export const getComments = id => {
       })
   }
 }
+
+export const addComment = (id, data) => {
+  return dispatch => {
+    return axios.post(`${PATH}/photos/${id}/comments`, data)
+      .then(response => {
+        dispatch({
+          type: POST_COMMENT,
+          payload: response.data
+        })
+      })
+  }
+}
