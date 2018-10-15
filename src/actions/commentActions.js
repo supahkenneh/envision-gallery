@@ -1,4 +1,4 @@
-import { GET_COMMENTS, POST_COMMENT } from './index';
+import { GET_COMMENTS, POST_COMMENT, DELETE_COMMENT, EDIT_COMMENT } from './index';
 import axios from 'axios';
 
 const PATH = '/api'
@@ -21,6 +21,30 @@ export const addComment = (id, data) => {
       .then(response => {
         dispatch({
           type: POST_COMMENT,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export const deleteComment = id => {
+  return dispatch => {
+    return axios.delete(`${PATH}/photos/${id}/comments`)
+      .then(response => {
+        dispatch({
+          type: DELETE_COMMENT,
+          payload: response.data
+        })
+      })
+  }
+}
+
+export const editComment = (id, data) => {
+  return dispatch => {
+    return axios.delete(`${PATH}/photos/${id}/comments`, data)
+      .then(response => {
+        dispatch({
+          type: EDIT_COMMENT,
           payload: response.data
         })
       })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CommentOptions from './CommentOptions';
 
 const Comment = props => {
   return (
@@ -7,7 +8,9 @@ const Comment = props => {
       <Link to={`/users/${props.comment.author.id}`}>
         <div>@{props.comment.author.username}</div>
       </Link>
-      <div className="comment-content">{props.comment.content}</div>
+      <div className="comment-content">{props.comment.content}
+        <CommentOptions comment={props.comment} />
+      </div>
     </div>
   );
 }

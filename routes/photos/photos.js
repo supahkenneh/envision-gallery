@@ -145,4 +145,32 @@ router.post('/:id/comments', (req, res) => {
     })
 });
 
+router.delete('/:id/comments', (req, res) => {
+  //id is comment
+  const id = req.params.id;
+  let photoId;
+  return Comment
+    .where({ id })
+    .fetch()
+    .then(comment => {
+      photoId = comment.attributes.photo_id;
+    })
+    .then(() => {
+      return new Comment({ id })
+        .destroy()
+        .then(() => {
+          return Comment
+            .where({ photo_id: photoId })
+            .fetchAll({
+              withRelated: [{
+                'author': qb => { qb.column('id', 'username') }
+              }]
+            })
+            .then(comments => {
+              return res.json(comments)
+            })
+        })
+    })
+})
+
 module.exports = router;

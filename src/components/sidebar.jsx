@@ -25,7 +25,7 @@ class Sidebar extends Component {
     }
     return (
       <div className="sidebar">
-        <div className="message">Welcome {this.props.user.username}</div>
+        <div className="message">Welcome, {this.props.user.username}</div>
         <div className="sidebar-options">
           <Link to={`/users/${this.props.user.id}`}>
             <button>Your Profile</button>

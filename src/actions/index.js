@@ -14,3 +14,4 @@ export const DELETE_PHOTO = 'DELETE_PHOTO';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const POST_COMMENT = 'POST_COMMENT';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';

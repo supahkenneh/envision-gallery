@@ -6,17 +6,13 @@ import SidebarPhoto from './sidebarPhoto';
 
 class SidebarPhotoContainer extends Component {
 
-  componentDidMount = id => {
-    if (id) {
-      this.props.getOtherPhotos(id)
-    }
+  componentDidUpdate = () => {
+    this.props.getOtherPhotos(this.props.photoId)
   }
 
   render() {
-    if (this.props.ownerId && !this.props.photoList.length) {
-      this.componentDidMount(this.props.ownerId)
-    }
-    const photoArr = this.props.photoList.filter(photo => photo.id !== this.props.photoId)
+    const photoArr = this.props.photoList
+      .filter(photo => photo.id !== this.props.photoId)
     return (
       <div className="sidebar-photos">
         <div className="user-headline">Photos By: @{this.props.owner}</div>
