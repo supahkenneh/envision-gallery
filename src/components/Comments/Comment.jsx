@@ -7,7 +7,7 @@ const Comment = props => {
       <Link to={`/users/${props.comment.author.id}`}>
         <div>@{props.comment.author.username}</div>
       </Link>
-      <div className="content">{props.comment.content}</div>
+      <div className="comment-content">{props.comment.content}</div>
     </div>
   );
 }

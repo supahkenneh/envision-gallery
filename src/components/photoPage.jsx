@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadPhoto } from '../actions/photoActions';
+import { getComments } from '../actions/commentActions';
 
 import SecondSidebar from '../components/secondSidebar';
 import Comments from './Comments/Comments';
+import NewCommentForm from './Comments/CommentForm';
 
 class PhotoPage extends Component {
 
   componentDidMount() {
     this.props.loadPhoto(this.props.match.params.id);
+    this.props.getComments(this.props.match.params.id);
   }
 
   render() {
@@ -28,7 +31,14 @@ class PhotoPage extends Component {
             </div>
           </div>
           <SecondSidebar photo={this.props.photo} />
-          <Comments photoId={this.props.photo.id} />
+          <div className="comment-section-container">
+            {
+              this.props.comments ?
+                <Comments comments={this.props.comments} /> :
+                null
+            }
+            <NewCommentForm photoId={this.props.photo.id} />
+          </div>
         </React.Fragment>
 
       );
@@ -41,6 +51,7 @@ class PhotoPage extends Component {
 
 const mapStateToProps = state => ({
   photo: state.photos,
+  comments: state.comments
 })
 
-export default connect(mapStateToProps, { loadPhoto })(PhotoPage);
+export default connect(mapStateToProps, { loadPhoto, getComments })(PhotoPage);

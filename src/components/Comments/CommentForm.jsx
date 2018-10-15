@@ -15,14 +15,13 @@ class NewCommentForm extends Component {
   }
 
   handleSubmit = (e) => {
-    // need to get id of photo here
     e.preventDefault();
-    this.props.addComment(this.state)
+    this.props.addComment(this.props.photoId, this.state)
   }
 
   render() {
     return (
-      <div className="new-comment-form-container">
+      <div className="comment-form-container">
         <form>
           <label htmlFor="comment-label" className="comment-label">Add a Comment:</label>
           <textarea onChange={this.handleChange}></textarea>

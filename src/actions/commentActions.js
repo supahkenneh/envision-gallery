@@ -4,6 +4,7 @@ import axios from 'axios';
 const PATH = '/api'
 
 export const getComments = id => {
+  console.log('getting comments');
   return dispatch => {
     return axios.get(`${PATH}/photos/${id}/comments`)
       .then(response => {
