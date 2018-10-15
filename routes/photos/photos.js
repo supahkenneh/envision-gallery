@@ -124,15 +124,22 @@ router.get('/:id/comments', (req, res) => {
 });
 
 router.post('/:id/comments', (req, res) => {
-  const id = req.params.id;
+  const photo_id = req.params.id;
   const author = req.user.id;
   const { content } = req.body;
   return new Comment({
     author,
-    photo_id: id,
+    photo_id,
     content
   })
     .save()
+    .then(comment => {
+      return comment.refresh({
+        withRelated: [{
+          'author': qb => { qb.column('id', 'username') }
+        }]
+      })
+    })
     .then(comment => {
       res.json(comment);
     })

@@ -16,7 +16,8 @@ class NewCommentForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addComment(this.props.photoId, this.state)
+    this.props.addComment(this.props.photoId, this.state);
+    this.setState({ content: '' })
   }
 
   render() {
@@ -24,7 +25,7 @@ class NewCommentForm extends Component {
       <div className="comment-form-container">
         <form>
           <label htmlFor="comment-label" className="comment-label">Add a Comment:</label>
-          <textarea onChange={this.handleChange}></textarea>
+          <textarea onChange={this.handleChange} value={this.state.content}></textarea>
           <button
             className="action-button"
             onClick={this.handleSubmit}
