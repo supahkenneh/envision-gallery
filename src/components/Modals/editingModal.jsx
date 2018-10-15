@@ -10,7 +10,7 @@ class EditingModal extends Component {
     }
   }
 
-  handleDescriptionInput = (event) => {
+  handleDescriptionInput = event => {
     this.setState({ description: event.target.value })
   }
 
@@ -27,7 +27,7 @@ class EditingModal extends Component {
           <form>
             <div className="form-headline">Edit Photo</div>
             <label htmlFor="description">Description</label>
-            
+
             <textarea name="description"
               onChange={this.handleDescriptionInput}
               defaultValue={this.props.photo.description}

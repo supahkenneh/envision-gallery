@@ -12,8 +12,7 @@ function comments(state = [], action) {
     case POST_COMMENT:
       return [...state, action.payload];
     case EDIT_COMMENT:
-      console.log('edit reducer', action.payload);
-      break;
+      return [...action.payload];
     case DELETE_COMMENT:
       return [...action.payload];
     default:

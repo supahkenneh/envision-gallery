@@ -506,6 +506,32 @@ a:visited {
   cursor: pointer;
 }
 
+.edit-comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-comment-container textarea {
+  resize: none;
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  padding: 5px;
+  margin: 5px;
+  overflow: auto;
+}
+
+.edit-comment-container .small-action-button {
+  border: 1px solid black;
+  padding: 7px;
+  width: 75px;
+  font-size: 12px;
+  color: white;
+  background: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
 /* TAG: ADD-COMMENT-FORM */
 .comment-form-container {
   padding: 15px;

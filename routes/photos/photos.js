@@ -145,8 +145,32 @@ router.post('/:id/comments', (req, res) => {
     })
 });
 
+router.put('/:id/comments', (req, res) => {
+  //id is comment id
+  const id = req.params.id;
+  const { content } = req.body;
+  return new Comment({ id })
+    .save({ content }, { patch: true })
+    .then(comment => {
+      comment.refresh()
+        .then(comment => {
+          let photo_id = comment.attributes.photo_id;
+          return Comment
+            .where({ photo_id })
+            .fetchAll({
+              withRelated: [{
+                'author': qb => { qb.column('id', 'username') }
+              }]
+            })
+            .then(comments => {
+              res.json(comments);
+            })
+        })
+    })
+})
+
 router.delete('/:id/comments', (req, res) => {
-  //id is comment
+  //id is comment id
   const id = req.params.id;
   let photoId;
   return Comment

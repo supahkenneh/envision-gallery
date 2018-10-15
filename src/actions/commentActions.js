@@ -41,7 +41,7 @@ export const deleteComment = id => {
 
 export const editComment = (id, data) => {
   return dispatch => {
-    return axios.delete(`${PATH}/photos/${id}/comments`, data)
+    return axios.put(`${PATH}/photos/${id}/comments`, data)
       .then(response => {
         dispatch({
           type: EDIT_COMMENT,
