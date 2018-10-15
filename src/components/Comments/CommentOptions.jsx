@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteComment } from '../../actions/commentActions';
+import { checkUser } from '../../actions/userActions';
 
 import EditCommentPopout from './EditCommentPopout';
 class CommentOptions extends Component {
@@ -10,6 +11,10 @@ class CommentOptions extends Component {
       editing: false,
       deleting: false
     }
+  }
+
+  componentDidMount() {
+    this.props.checkUser();
   }
 
   handleDelete = id => {
@@ -31,22 +36,31 @@ class CommentOptions extends Component {
   }
 
   render() {
-    return (
-      <div className="comment-button-container">
-        <button onClick={this.toggleEdit}>Edit</button>
-        <button
-          onClick={() => this.handleDelete(this.props.comment.id)}
-        >Delete</button>
-        <div>
-          {
-            this.state.editing
-              ? <EditCommentPopout comment={this.props.comment} toggle={this.toggleEdit} />
-              : null
-          }
+    if (this.props.user.username === this.props.comment.author.username) {
+      return (
+        <div className="comment-button-container">
+          <button onClick={this.toggleEdit}>Edit</button>
+          <button
+            onClick={() => this.handleDelete(this.props.comment.id)}
+          >Delete</button>
+          <div>
+            {
+              this.state.editing
+                ? <EditCommentPopout comment={this.props.comment} toggle={this.toggleEdit} />
+                : null
+            }
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return (
+      null
+    )
   }
 }
 
-export default connect(null, { deleteComment })(CommentOptions);
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps, { deleteComment, checkUser })(CommentOptions);
