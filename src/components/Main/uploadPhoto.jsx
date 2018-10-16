@@ -7,7 +7,6 @@ class PhotoUpload extends Component {
   redirect = false;
   showErrors = false;
   disabled = true;
-  photoValid = false;
   descriptionValid = false;
 
   constructor(props) {
@@ -56,6 +55,7 @@ class PhotoUpload extends Component {
         <Redirect to="/" />
       )
     }
+
     return (
       <div className="upload-form-container">
         <div className="form-headline">Add to the Gallery</div>
