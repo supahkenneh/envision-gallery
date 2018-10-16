@@ -45,14 +45,17 @@ class PhotoPage extends Component {
           </SecondSidebar>
           <div className="comment-section-container">
             {
-              this.props.comments ?
-                <Comments comments={this.props.comments} /> :
-                null
+              this.props.comments
+                ? <Comments comments={this.props.comments} />
+                : null
             }
-            <NewCommentForm photoId={this.props.photo.id} />
+            {
+              this.props.user.username
+                ? <NewCommentForm photoId={this.props.photo.id} />
+                : null
+            }
           </div>
         </React.Fragment>
-
       );
     }
     return (
@@ -62,6 +65,7 @@ class PhotoPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   photo: state.photos,
   comments: state.comments
 })
