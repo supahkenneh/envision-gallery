@@ -7,7 +7,7 @@ import MainPhoto from './mainPhoto';
 import PhotoCollection from './photoCollection';
 class Body extends Component {
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.props.getPhotos()
   }
 
