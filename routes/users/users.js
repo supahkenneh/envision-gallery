@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const User = require('../../db/models/User');
 const Photo = require('../../db/models/Photo');
 
 router.get('/:id', (req, res) => {

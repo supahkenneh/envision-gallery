@@ -37,14 +37,13 @@ export const loginUser = loginData => {
 
 export const checkUser = () => {
   return dispatch => {
-    if (localStorage.id && localStorage.username && localStorage.email) {
+    if (localStorage.id && localStorage.username) {
       //if user is in local storage, dispatch to props
       dispatch({
         type: CHECK_USER,
         payload: {
           id: localStorage.id,
           username: localStorage.username,
-          email: localStorage.email,
         }
       })
     }
@@ -80,11 +79,9 @@ export const getUserPhotos = id => {
 function putInLocalStorage(data) {
   window.localStorage.setItem('id', data.id);
   window.localStorage.setItem('username', data.username);
-  window.localStorage.setItem('email', data.email);
 }
 
 function removeFromLocalStorage() {
   window.localStorage.removeItem('id');
   window.localStorage.removeItem('username');
-  window.localStorage.removeItem('email');
 }

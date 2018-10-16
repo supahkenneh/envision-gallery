@@ -4,9 +4,12 @@ import { registerUser } from '../actions/userActions';
 import { connect } from 'react-redux';
 
 class Register extends Component {
+  disabled = true;
+  usernameValid = false;
+  passwordValid = false;
+  showErrors = false;
   constructor(props) {
     super(props);
-
     this.state = {
       username: '',
       password: '',
@@ -15,20 +18,40 @@ class Register extends Component {
   }
 
   handleUsernameInput = (event) => {
-    this.setState({ username: event.target.value })
+    this.setState({ username: event.target.value });
+    this.handleValidations();
   }
 
   handlePasswordInput = (event) => {
-    this.setState({ password: event.target.value })
-  }
-
-  handleEmailInput = (event) => {
-    this.setState({ email: event.target.value })
+    this.setState({ password: event.target.value });
+    this.handleValidations();
   }
 
   handleRegistration = (e) => {
     e.preventDefault();
-    this.props.registerUser(this.state)
+    if (!this.disabled) {
+      this.props.registerUser(this.state)
+    }
+  }
+
+  handleValidations = () => {
+    if (this.state.username.length > 2) {
+      this.usernameValid = true;
+    } else {
+      this.showErrors = true;
+      this.usernameValid = false;
+    }
+    if (this.state.password.length > 4) {
+      this.passwordValid = true;
+    } else {
+      this.showErrors = true;
+      this.passwordValid = false;
+    }
+    if (this.usernameValid && this.passwordValid) {
+      this.disabled = false;
+    } else {
+      this.disabled = true;
+    }
   }
 
   render() {
@@ -40,24 +63,34 @@ class Register extends Component {
     return (
       <div className="auth-form-container">
         <form>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Username
+            {
+              this.showErrors
+                && !this.usernameValid
+                ? <span>Username must have at least 3 characters</span>
+                : null
+            }
+          </label>
           <input
             type="text"
             onChange={this.handleUsernameInput}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password
+            {
+              this.showErrors
+                && !this.passwordValid
+                ? <span>Password must have at least 4 characters</span>
+                : null
+            }
+          </label>
           <input
-            type="text"
+            type="password"
             onChange={this.handlePasswordInput}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            onChange={this.handleEmailInput}
           />
           <div className="button-container">
             <button
               className="action-button"
+              disabled={this.disabled}
               onClick={this.handleRegistration}
             >Register</button>
             <Link to="/">

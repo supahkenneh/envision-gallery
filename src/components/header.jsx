@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <div className="main-header">
         <Link to="/">
-          <h1 className="app-name">e n v i s i o n</h1>
+          <h1 className="app-name">envision</h1>
         </Link>
         <div className="app-description">
           <p>a place for visual creators to share and be inspired</p>

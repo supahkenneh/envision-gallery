@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   background: whitesmoke;
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -42,7 +43,7 @@ a:visited {
 .main-header .app-name {
   font-size: 52px;
   color: gray;
-  letter-spacing: 10px;
+  letter-spacing: 30px;
   text-decoration: none;
 }
 
@@ -114,7 +115,6 @@ a:visited {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 500px; */
   width: 100%;
   margin: 15px;
   border-bottom: 1px solid gray;
@@ -132,7 +132,6 @@ a:visited {
 .image-container img {
   margin: 10px;
   max-height: 100%;
-  /* max-width: 100%;; */
   border-radius: 5px;
 }
 
@@ -151,7 +150,6 @@ a:visited {
 .photo-collection {
   grid-area: content;
   width: 100%;
-  /* height: 100%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -228,6 +226,12 @@ a:visited {
   border-bottom: 1px solid gray;
 }
 
+.auth-form-container form label span {
+  color: red;
+  font-size: 12px;
+  padding: 5px;
+}
+
 .auth-form-container .button-container {
   width: 70%;
   display: flex;
@@ -245,6 +249,22 @@ a:visited {
 }
 
 .action-button {
+  background: black;
+  color: white;
+}
+
+.action-button:disabled {
+  background: gray;
+  border: 1px solid gray;
+}
+
+.action-button:hover, 
+.action-button:disabled:hover, 
+.cancel-button:hover {
+  cursor: pointer;
+}
+
+.cancel-button:hover {
   background: black;
   color: white;
 }

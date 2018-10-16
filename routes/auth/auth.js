@@ -54,10 +54,7 @@ passport.use(new LocalStrategy((username, password, done) => {
 }));
 
 router.post('/register', (req, res) => {
-  let {
-    username,
-    email
-  } = req.body;
+  let { username } = req.body;
   bcrypt.genSalt(saltRounds, (err, salt) => {
     if (err) { return res.status(500); }
     bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
@@ -65,15 +62,13 @@ router.post('/register', (req, res) => {
       return new User({
         username: username.toLowerCase(),
         password: hashedPassword,
-        email: email,
       })
         .save()
         .then(result => {
-          //pluck off id, username, and email for redux
+          //pluck off id and username to be stored in local storage
           let userProfile = {
             id: result.attributes.id,
             username: result.attributes.username,
-            email: result.attributes.email
           }
           res.json(userProfile)
         })
@@ -88,15 +83,13 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) { return next(err); }
-    // if (!user) { return res.redirect('/login'); }
     req.login(user, err => {
       if (err) {
         return next(err);
       } else {
         let userProfile = {
           id: user.id,
-          username: user.username,
-          email: user.email
+          username: user.username
         }
         return res.json(userProfile);
       }
