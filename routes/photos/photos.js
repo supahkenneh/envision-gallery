@@ -42,6 +42,7 @@ router.get('/', (req, res) => {
     .then(photos => {
       res.json(photos.models);
     })
+    .catch(err => console.log('Error: ', err))
 });
 
 router.get('/:id', (req, res) => {
@@ -56,6 +57,7 @@ router.get('/:id', (req, res) => {
     .then(photo => {
       res.json(photo);
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 router.get('/:id/all', (req, res) => {
@@ -67,6 +69,7 @@ router.get('/:id/all', (req, res) => {
     .then(photos => {
       res.json(photos);
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 router.post('/upload', upload.single('photo'), (req, res) => {
@@ -81,6 +84,7 @@ router.post('/upload', upload.single('photo'), (req, res) => {
     .then(photo => {
       res.json(photo)
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 router.put('/:id', (req, res) => {
@@ -98,6 +102,7 @@ router.put('/:id', (req, res) => {
     .then(photo => {
       res.json(photo);
     })
+    .catch(err => console.log('Error: ', err))
 });
 
 router.delete('/:id', (req, res) => {
@@ -107,6 +112,7 @@ router.delete('/:id', (req, res) => {
     .then(response => {
       return res.json({ success: true })
     })
+    .catch(err => console.log('Error: ', err))
 });
 
 router.get('/:id/comments', (req, res) => {
@@ -121,6 +127,7 @@ router.get('/:id/comments', (req, res) => {
     .then(comments => {
       res.json(comments);
     })
+    .catch(err => console.log('Error: ', err))
 });
 
 router.post('/:id/comments', (req, res) => {
@@ -143,6 +150,7 @@ router.post('/:id/comments', (req, res) => {
     .then(comment => {
       res.json(comment);
     })
+    .catch(err => console.log('Error: ', err))
 });
 
 router.put('/:id/comments', (req, res) => {
@@ -167,6 +175,7 @@ router.put('/:id/comments', (req, res) => {
             })
         })
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 router.delete('/:id/comments', (req, res) => {
@@ -195,6 +204,7 @@ router.delete('/:id/comments', (req, res) => {
             })
         })
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 module.exports = router;

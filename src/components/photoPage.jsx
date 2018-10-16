@@ -37,7 +37,7 @@ class PhotoPage extends Component {
               <Link to={`/users/${ownerId}`}>
                 <div>@{ownerUsername}</div>
               </Link>
-              <div>{this.props.photo && this.props.photo.description}</div>
+              <div className="photo-description">{this.props.photo && this.props.photo.description}</div>
             </div>
           </div>
           <SecondSidebar photo={this.props.photo}>

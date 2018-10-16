@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const server = express();
 const bodyParser = require('body-parser');
@@ -9,6 +10,8 @@ const passport = require('passport');
 const PORT = process.env.port || 8000;
 
 const routes = require('./routes');
+
+// server.use(express.static(path.join(__dirname, '/../public')));
 
 server.use(bodyParser.json());
 
@@ -26,8 +29,10 @@ server.use(passport.session());
 
 server.use('/api', routes);
 
+// server.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/../public/index.html'));
+// });
+
 server.listen(PORT, (req, res) => {
   console.log(`Server started on port: ${PORT}`)
 });
-
-//sidebar bug

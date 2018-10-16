@@ -14,10 +14,7 @@ a {
 
 a:hover {
   cursor: pointer;
-}
-
-a:visited {
-  color: gray;
+  color: black;
 }
 
 .app {
@@ -100,8 +97,34 @@ a:visited {
   position: fixed;
   bottom: 0;
   height: 5vh;
-  background: #222;
+  background: rgb(185, 185, 185);
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer .github {
+  padding: 3px;
+  height: 4vh;
+  width: 4vh;
+  margin: auto 10px;
+}
+
+.footer .github img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.footer .linkedin {
+  padding: 3px;
+  height: 4vh;
+  width: 4vh;
+  margin: auto 10px;
+}
+
+.footer .linkedin img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .body {
@@ -300,6 +323,14 @@ a:visited {
 
 .photo-detail-container .details-container {
   margin: 15px auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.photo-detail-container .details-container .photo-description {
+  display: flex;
+  justify-content: flex-start;
+  padding: 15px;
 }
 
 /* TAG: PHOTO-UPLOAD */
@@ -480,11 +511,11 @@ a:visited {
 .user-photos-container {
   grid-area: main-pic, content;
   width: 100%;
-  /* height: 100%; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 20px;
+  margin-bottom: 100px;
 }
 
 .photo-container {

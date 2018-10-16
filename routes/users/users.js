@@ -13,6 +13,7 @@ router.get('/:id', (req, res) => {
     .then(photos => {
       res.json(photos);
     })
+    .catch(err => console.log('Error: ', err))
 })
 
 module.exports = router;
